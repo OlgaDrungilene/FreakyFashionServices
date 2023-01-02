@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33006.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreakyFashionServices.StockService", "FreakyFashionServices.StockService\FreakyFashionServices.StockService.csproj", "{B12A0878-8B4D-4BBF-88A7-4A7A967CAA68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreakyFashionServices.StockService", "FreakyFashionServices.StockService\FreakyFashionServices.StockService.csproj", "{B12A0878-8B4D-4BBF-88A7-4A7A967CAA68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreakyFashionServices.CatalogService", "FreakyFashionServices.CatalogService\FreakyFashionServices.CatalogService.csproj", "{6A878A30-E9DE-434E-AA58-954893338B3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreakyFashionServices.CatalogService", "FreakyFashionServices.CatalogService\FreakyFashionServices.CatalogService.csproj", "{6A878A30-E9DE-434E-AA58-954893338B3F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreakyFashionServices.BasketService", "FreakyFashionServices.BasketService\FreakyFashionServices.BasketService.csproj", "{E384BC32-9028-4095-B3FB-45C4597A06D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreakyFashionServices.OrderService", "FreakyFashionServices.OrderService\FreakyFashionServices.OrderService.csproj", "{628D31C0-7228-417E-9ED9-A472B36F1816}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{6A878A30-E9DE-434E-AA58-954893338B3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A878A30-E9DE-434E-AA58-954893338B3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A878A30-E9DE-434E-AA58-954893338B3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E384BC32-9028-4095-B3FB-45C4597A06D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E384BC32-9028-4095-B3FB-45C4597A06D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E384BC32-9028-4095-B3FB-45C4597A06D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E384BC32-9028-4095-B3FB-45C4597A06D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{628D31C0-7228-417E-9ED9-A472B36F1816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{628D31C0-7228-417E-9ED9-A472B36F1816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{628D31C0-7228-417E-9ED9-A472B36F1816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{628D31C0-7228-417E-9ED9-A472B36F1816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
