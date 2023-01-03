@@ -1,4 +1,6 @@
-﻿namespace FreakyFashionServices.OrderService.Dto;
+﻿using freakyfashionservices.orderservice.dto;
+
+namespace FreakyFashionServices.OrderService.Dto;
 
 public class BasketDto
 {

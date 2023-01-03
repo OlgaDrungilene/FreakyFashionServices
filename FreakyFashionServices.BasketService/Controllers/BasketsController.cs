@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FreakyFashionServices.BasketService.Dto;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
@@ -83,18 +84,6 @@ public class BasketsController : ControllerBase
 
 }
 
-public class BasketDto
-{
-    public int Identifier { get; set; }
-
-    public List<ItemDto> Items { get; set; }
 
 
-}
 
-
-public class ItemDto
-{
-    public string Sku { get; set; }
-    public int Quantity { get; set; }
-}

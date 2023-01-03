@@ -2,10 +2,8 @@
 using FreakyFashionServices.OrderService.Dto;
 using FreakyFashionServices.OrderService.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Common;
-using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace FreakyFashionServices.OrderService.Controllers;
@@ -50,45 +48,44 @@ public class OrdersController : ControllerBase
 
         // 5, Перейти к реализации метода GET 
 
-        
-
-
-        //    var newProduct = new Product
-        //{
-
-        //};
-
-        var newOrder = new Order { 
-            FirstName=newOrderDto.FirstName,
-            LastName=newOrderDto.LastName,
-            Email=newOrderDto.Email,
-            CreatedAt=DateTime.Now
+        var newOrder = new Order
+        {
+            FirstName = newOrderDto.FirstName,
+            LastName = newOrderDto.LastName,
+            Email = newOrderDto.Email,
+            CreatedAt = DateTime.Now,
+            CustomerId = newOrderDto.Identifier
         };
+
+        foreach (var item in basket.Items)
+        {
+            var product = new Product
+            {
+                Sku = item.Sku,
+                Quantity = item.Quantity,
+                Order = newOrder
+
+            };
+
+            Context.Products.Add(product);
+
+        }
 
         Context.Orders.Add(newOrder);
         Context.SaveChanges();
 
-        var result = new OrderLineDto { 
-            OrderId=newOrder.Id,
-            CreatedAt=newOrder.CreatedAt
+        var result = new OrderLineDto
+        {
+            OrderId = newOrder.Id,
+            CreatedAt = newOrder.CreatedAt
 
         };
 
-        return Created("",result);
+        Cache.Remove(newOrderDto.Identifier.ToString());
+
+        return Created("", result);
 
 
-        /*
-             
-       Product
-        ================
-        * Id
-        * OrderId (FK)
-        * ProductSKU
-        * Quantity
-         
-         */
-
-       
 
         // 1. СЛазить в Reddis - получить корзину по кё newOrderDto.Identifier
         // 2. Корзины может не быть по её Id 
@@ -100,12 +97,29 @@ public class OrdersController : ControllerBase
         //return Created();
 
     }
-//    [HttpGet("{sku}")]
+    [HttpGet("{customerId}")]
 
-//    public IActionResult GetOrder(int identifier)
-//    {
-//        var order = Context.Orders.FirstOrDefault(x => x.);
-//    }
-//
+    public IActionResult GetOrder(int customerId)
+    {
+        var order = Context.Orders.Include(x=>x.Products).FirstOrDefault(x => x.CustomerId == customerId);
+        if (order == null)
+            return NotFound();
+
+        var result = new OrderDto
+        {
+            Id = order.Id,
+            CustomerId = order.CustomerId,
+            Products = order.Products.Select(x => new ProductDto
+            {
+                ProductSku = x.Sku,
+                Quantity = x.Quantity,
+
+            }).ToList(),
+
+
+        };
+        return Ok(result);
+    }
+
 }
 
