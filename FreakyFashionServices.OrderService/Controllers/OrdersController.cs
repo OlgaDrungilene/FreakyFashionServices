@@ -40,13 +40,12 @@ public class OrdersController : ControllerBase
         if (basket == null)
             return UnprocessableEntity();//422
 
-
-        // 1. Добавить в БД Items/Products (должна быть связана с Order по FK) 
-        // 2. Переложить basket.Items в продукты заказа (newOrder)
-        // 3. Добавить в определние Order поле CustomerId (заполнять его Identifier корзиы)
-        // 4. Зачистить корзину после успешного создания заказа
-
-        // 5, Перейти к реализации метода GET 
+        //TODO
+        // 1.Lägga till Items/Products till DB (FK) 
+        // 2.newOrder (basket.Items)
+        // 3.Lägga till CustomerId till Order (baske Identifier)
+        // 4.Remove basket
+        // 5. Get method
 
         var newOrder = new Order
         {
@@ -86,15 +85,11 @@ public class OrdersController : ControllerBase
         return Created("", result);
 
 
-
-        // 1. СЛазить в Reddis - получить корзину по кё newOrderDto.Identifier
-        // 2. Корзины может не быть по её Id 
-        // 3. Десериализуйте её в объектную модель (Deserialize)
-        // 4. Переложите данные в БД - должно быть две таблицы:^линия заказ + продукты входящие в заказ
-        //      OrderLine (Id, customerId, )
-
-
-        //return Created();
+        //TODO
+        // 1.Från Reddis - få basket newOrderDto.Identifier
+        // 2.Basket kan vara icke existerande (Id) 
+        // 3.Deseliarize den
+        // 4.Flytta data till DB:Product,OrderLine
 
     }
     [HttpGet("{customerId}")]
