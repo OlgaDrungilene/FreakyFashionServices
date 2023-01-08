@@ -12,6 +12,9 @@ namespace FreakyFashionServices.OrderService
 
             // Add services to the container.
 
+            // Gör att vi kan be om en IHttpClientFactory via dependency injection
+            builder.Services.AddHttpClient();
+
             builder.Services.AddDbContext<ApplicationContext>(
            options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
 
@@ -25,11 +28,6 @@ namespace FreakyFashionServices.OrderService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
-            builder.Services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = builder.Configuration["ConnectionStrings:Redis"];
-            });
 
             var app = builder.Build();
 

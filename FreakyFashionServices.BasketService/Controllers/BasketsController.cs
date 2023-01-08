@@ -27,7 +27,7 @@ public class BasketsController : ControllerBase
         var serializedBaskets = await Cache.GetStringAsync(identifier.ToString());
 
         await Cache.SetStringAsync(
-      identifier.ToString(),
+      identifier.ToString(),    
       JsonSerializer.Serialize(basket));
 
         if (serializedBaskets != null)
@@ -35,7 +35,6 @@ public class BasketsController : ControllerBase
             return NoContent();
 
         return Created("", null);
-
 
     }
 
